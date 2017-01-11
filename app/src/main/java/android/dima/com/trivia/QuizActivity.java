@@ -48,38 +48,30 @@ public class QuizActivity extends AppCompatActivity {
             musicTrivia = new MusicWorker().execute(getString(R.string.music_trivia_address)).get();
             questionListIterator = musicTrivia.questions.listIterator();
             currentQuestion = questionListIterator.next();
-            iterateQuiz(currentQuestion);
+            setQuizOptions(currentQuestion);
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
         }
     }
 
-    /**
-     * Use Inheritence
-     *
-     * @param question
-     */
-    private void iterateQuiz(final Question question) {
+    private void setQuizOptions(Question question) {
         questionText.setText(question.getText());
-        answer1.setText(question.answers.answer.get(0).value);
 
-        if (question.answers.answer.size() == 1) {
-            answer2.setVisibility(View.GONE);
-            answer3.setVisibility(View.GONE);
-            answer4.setVisibility(View.GONE);
-        } else if (question.answers.answer.size() == 2) {
-            answer2.setText(question.answers.answer.get(1).value);
-            answer3.setVisibility(View.GONE);
-            answer4.setVisibility(View.GONE);
-        } else if (question.answers.answer.size() == 3) {
-            answer2.setText(question.answers.answer.get(1).value);
-            answer3.setText(question.answers.answer.get(2).value);
-            answer4.setVisibility(View.GONE);
-        } else {
-            answer2.setText(question.answers.answer.get(1).value);
-            answer3.setText(question.answers.answer.get(2).value);
-            answer4.setText(question.answers.answer.get(3).value);
+        switch (question.answers.answer.size()) {
+            case 1:
+                new CheckBoxSize1(question);
+                break;
+            case 2:
+                new CheckBoxSize2(question);
+                break;
+            case 3:
+                new CheckBoxSize3(question);
+                break;
+            case 4:
+                new CheckBoxSize4(question);
+                break;
         }
+
         this.questionNumber.setText("Question Number " + questionListIterator.nextIndex());
     }
 
@@ -96,7 +88,7 @@ public class QuizActivity extends AppCompatActivity {
         }
         this.questionNumber.setText("Question Number " + questionListIterator.nextIndex());
         currentQuestion = questionListIterator.next();
-        iterateQuiz(currentQuestion);
+        setQuizOptions(currentQuestion);
     }
 
     public void getCurrentAnswers() {
@@ -132,6 +124,7 @@ public class QuizActivity extends AppCompatActivity {
 
     public void resetCheckboxState() {
         this.answer2.setVisibility(View.GONE);
+        this.answer2.setVisibility(View.GONE);
         this.answer3.setVisibility(View.GONE);
         this.answer4.setVisibility(View.GONE);
 
@@ -146,44 +139,36 @@ public class QuizActivity extends AppCompatActivity {
 
     }
 
-    class CheckboxSize2 {
-        private CheckBox checkbox = answer2;
-
-        public CheckboxSize2(Question question) {
-            this.checkbox.setVisibility(View.VISIBLE);
-            initCheckbox(question);
-        }
-
-        public void initCheckbox(Question question) {
-            this.checkbox.setChecked(question.answers.answer.get(1).correct);
-            this.checkbox.setText(question.answers.answer.get(1).value);
+    class CheckBoxSize1 {
+        public CheckBoxSize1(Question question) {
+            answer1.setText(question.answers.answer.get(0).value);
+            answer1.setVisibility(View.VISIBLE);
         }
     }
 
-    class CheckboxSize3 extends CheckboxSize2 {
-        private CheckBox checkbox = answer3;
-
-        public CheckboxSize3(Question question) {
+    class CheckBoxSize2 extends CheckBoxSize1 {
+        public CheckBoxSize2(Question question) {
             super(question);
-            initCheckbox(question);
-        }
-
-        public void initCheckbox(Question question) {
-            this.checkbox.setChecked(question.answers.answer.get(2).correct);
-            this.checkbox.setText(question.answers.answer.get(2).value);
+            answer2.setText(question.answers.answer.get(1).value);
+            answer2.setVisibility(View.VISIBLE);
         }
     }
 
-    class CheckboxSize4 extends CheckboxSize3 {
-        private CheckBox checkbox = answer4;
+    class CheckBoxSize3 extends CheckBoxSize2 {
 
-        public CheckboxSize4(Question question) {
+        public CheckBoxSize3(Question question) {
             super(question);
+            answer3.setText(question.answers.answer.get(2).value);
+            answer3.setVisibility(View.VISIBLE);
         }
 
-        public void initCheckbox(Question question) {
-            this.checkbox.setChecked(question.answers.answer.get(3).correct);
-            this.checkbox.setText(question.answers.answer.get(3).value);
+    }
+
+    class CheckBoxSize4 extends CheckBoxSize3 {
+        public CheckBoxSize4(Question question) {
+            super(question);
+            answer4.setText(question.answers.answer.get(3).value);
+            answer4.setVisibility(View.VISIBLE);
         }
     }
 
