@@ -24,19 +24,25 @@ android {
         exclude 'META-INF/NOTICE.txt'
     }
     buildTypes {
+/*        debug {
+            minifyEnabled true
+            useProguard false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'),
+                    'proguard-rules.pro'
+        }*/
         release {
             minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android.txt'),
+                    'proguard-rules.pro'
         }
     }
-    dexOptions {
+/*    dexOptions {
         incremental true
-    }
+    }*/
 }
 
 configurations {
     compile.exclude group: "org.apache.httpcomponents", module: "httpclient"
-//    compile.exclude group: "org.json", module: "json"
 }
 
 dependencies {
@@ -46,16 +52,6 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:23.2.0'
     compile 'com.android.support:design:23.0.1'
-//    compile 'com.mashape.unirest:unirest-android:1.0.1'
-//    compile 'com.mashape.unirest:unirest-java:1.4.9'
-//    compile files("libs/httpclient-4.5.2.jar")
-
-//    compile 'org.apache.httpcomponents:httpclient-android:4.3.5'
-//    compile 'org.apache.httpcomponents:httpasyncclient:4.1.2'
-    compile 'org.apache.httpcomponents:httpmime:4.5.2'
-    compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.2'
-    compile group: 'commons-codec', name: 'commons-codec', version: '1.9'
-
     compile 'com.fasterxml.jackson.core:jackson-databind:2.3.2'
     testCompile 'junit:junit:4.12'
 }
