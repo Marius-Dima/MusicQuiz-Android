@@ -24,25 +24,12 @@ android {
         exclude 'META-INF/NOTICE.txt'
     }
     buildTypes {
-/*        debug {
-            minifyEnabled true
-            useProguard false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'),
-                    'proguard-rules.pro'
-        }*/
         release {
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'),
                     'proguard-rules.pro'
         }
     }
-/*    dexOptions {
-        incremental true
-    }*/
-}
-
-configurations {
-    compile.exclude group: "org.apache.httpcomponents", module: "httpclient"
 }
 
 dependencies {
@@ -52,6 +39,5 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:23.2.0'
     compile 'com.android.support:design:23.0.1'
-    compile 'com.fasterxml.jackson.core:jackson-databind:2.3.2'
     testCompile 'junit:junit:4.12'
 }
