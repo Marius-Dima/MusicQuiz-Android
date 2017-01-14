@@ -1,0 +1,243 @@
+{
+  "question": [
+    {
+      "text": "<font color='grey'>Which two tracks appear on the album</font><br>'Myra Lee'<font color='grey'><br>by<br></font>Cat Power",
+      "answers": {
+        "a": [
+          {
+            "value": "houses of the holy",
+            "correct": 0
+          },
+          {
+            "value": "Top Expert",
+            "correct": 1
+          },
+          {
+            "value": "Still In Love",
+            "correct": 1
+          },
+          {
+            "value": "Anda Lucía",
+            "correct": 0
+          }
+        ]
+      },
+      "selectable": 2
+    },
+    {
+      "text": "<font color='grey'>Which artist recorded the song</font><br>'Follow Me'",
+      "answers": {
+        "a": [
+          {
+            "value": "Beyoncé",
+            "correct": 0
+          },
+          {
+            "value": "Foyone",
+            "correct": 0
+          },
+          {
+            "value": "Clams Casino",
+            "correct": 0
+          },
+          {
+            "value": "Muse",
+            "correct": 1
+          }
+        ]
+      },
+      "selectable": 1
+    },
+    {
+      "text": "<font color='grey'>Which two tracks appear on the album</font><br>'Blank Face LP'<font color='grey'><br>by<br></font>Schoolboy Q",
+      "answers": {
+        "a": [
+          {
+            "value": "By Any Means",
+            "correct": 1
+          },
+          {
+            "value": "Right By My Side (feat. Chris Brown)",
+            "correct": 0
+          },
+          {
+            "value": "Tookie Knows II (feat. Traffic & TF)",
+            "correct": 1
+          },
+          {
+            "value": "Di Sana Menanti Di Sini Menunggu",
+            "correct": 0
+          }
+        ]
+      },
+      "selectable": 2
+    },
+    {
+      "text": "<font color='grey'>Which two artists both have a song titled </font><br>'Always'",
+      "answers": {
+        "a": [
+          {
+            "value": "PEARSON EDUCATION",
+            "correct": 0
+          },
+          {
+            "value": "Sum 41",
+            "correct": 1
+          },
+          {
+            "value": "Bon Jovi",
+            "correct": 1
+          },
+          {
+            "value": "Rob Pattinson",
+            "correct": 0
+          }
+        ]
+      },
+      "selectable": 2
+    },
+    {
+      "text": "<font color='grey'>Which two tracks appear on the album</font><br>'Jacquees - Mood'<font color='grey'><br>by<br></font>Jacquees",
+      "answers": {
+        "a": [
+          {
+            "value": "Set It Off (Feat. Dej Loaf)",
+            "correct": 1
+          },
+          {
+            "value": "Last to Know",
+            "correct": 0
+          },
+          {
+            "value": "Know You",
+            "correct": 1
+          },
+          {
+            "value": "Main Hoon Hero Tera",
+            "correct": 0
+          }
+        ]
+      },
+      "selectable": 2
+    },
+    {
+      "text": "<font color='grey'>Which two tracks appear on the album</font><br>'The Dreaming'<font color='grey'><br>by<br></font>Kate Bush",
+      "answers": {
+        "a": [
+          {
+            "value": "Deep",
+            "correct": 0
+          },
+          {
+            "value": "Sat In Your Lap",
+            "correct": 1
+          },
+          {
+            "value": "Allemny Hawak",
+            "correct": 0
+          },
+          {
+            "value": "Leave It Open",
+            "correct": 1
+          }
+        ]
+      },
+      "selectable": 2
+    },
+    {
+      "text": "<font color='grey'>Which artist recorded the song</font><br>'Sober'",
+      "answers": {
+        "a": [
+          {
+            "value": "Jamie's Elsewhere",
+            "correct": 0
+          },
+          {
+            "value": "Dimmu Borgir",
+            "correct": 0
+          },
+          {
+            "value": "Arijit Singh",
+            "correct": 0
+          },
+          {
+            "value": "Tool",
+            "correct": 1
+          }
+        ]
+      },
+      "selectable": 1
+    },
+    {
+      "text": "Maroon 5<br><font color='grey'>and which other artist have a song titled</font><br>'Sugar'",
+      "answers": {
+        "a": [
+          {
+            "value": "SAFIA",
+            "correct": 0
+          },
+          {
+            "value": "Grupo Control",
+            "correct": 0
+          },
+          {
+            "value": "System of a Down",
+            "correct": 1
+          }
+        ]
+      },
+      "selectable": 1
+    },
+    {
+      "text": "<font color='grey'>Which two artists both have a song titled </font><br>'Rain'",
+      "answers": {
+        "a": [
+          {
+            "value": "SycAmour",
+            "correct": 1
+          },
+          {
+            "value": "Akala",
+            "correct": 0
+          },
+          {
+            "value": "Breaking Benjamin",
+            "correct": 1
+          },
+          {
+            "value": "U2",
+            "correct": 0
+          }
+        ]
+      },
+      "selectable": 2
+    },
+    {
+      "text": "<font color='grey'>Which two artists both have a song titled </font><br>'Down'",
+      "answers": {
+        "a": [
+          {
+            "value": "Jay Sean",
+            "correct": 1
+          },
+          {
+            "value": "blink-182",
+            "correct": 1
+          },
+          {
+            "value": "Drake feat. Wizkid & Kyla",
+            "correct": 0
+          },
+          {
+            "value": "The Weeknd",
+            "correct": 0
+          }
+        ]
+      },
+      "selectable": 2
+    }
+  ],
+  "level": 0,
+  "difficulty": 0,
+  "size": 10
+}

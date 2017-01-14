@@ -35,7 +35,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="78dp"
             android:elevation="7dp"
-            android:onClick="startQuizk"
+            android:onClick="startQuiz"
             android:text="@string/startQuiz" />
 
         <TextView

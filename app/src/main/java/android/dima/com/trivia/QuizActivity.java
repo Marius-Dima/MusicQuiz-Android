@@ -7,6 +7,7 @@ import android.dima.com.trivia.model.MusicTrivia;
 import android.dima.com.trivia.model.Question;
 import android.dima.com.trivia.worker.MusicWorker;
 import android.os.Bundle;
+import android.support.annotation.RawRes;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -14,7 +15,12 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.concurrent.ExecutionException;
@@ -28,7 +34,6 @@ public class QuizActivity extends AppCompatActivity {
     private ListIterator<Question> questionListIterator;
     private Question currentQuestion;
     private List<Answers> actualAnswers = new ArrayList<>();
-    private List<CheckBox> checkBoxes = new ArrayList<>();
     private int wrongAnswers = 0;
 
     @Override
@@ -46,12 +51,29 @@ public class QuizActivity extends AppCompatActivity {
 
         try {
             musicTrivia = new MusicWorker().execute(getString(R.string.music_trivia_address)).get();
-            questionListIterator = musicTrivia.questions.listIterator();
-            currentQuestion = questionListIterator.next();
-            setQuizOptions(currentQuestion);
-        } catch (InterruptedException | ExecutionException e) {
+            if (musicTrivia == null) {
+                Toast.makeText(this, "Loading trivia questions from static json due to network error", Toast.LENGTH_SHORT).show();
+                musicTrivia = loadFromJson(R.raw.questions);
+                Collections.shuffle(musicTrivia.questions);
+            }
+        } catch (InterruptedException | ExecutionException | IOException e) {
             e.printStackTrace();
         }
+
+        questionListIterator = musicTrivia.questions.listIterator();
+        currentQuestion = questionListIterator.next();
+        setQuizOptions(currentQuestion);
+    }
+
+    /**
+     * Load the Music Trivia content from a static json file
+     * This method is intended to replace performRequest() in case of a network failure or other technical difficulty
+     */
+    private MusicTrivia loadFromJson(@RawRes int id) throws IOException {
+        final ObjectMapper objectMapper = new ObjectMapper();
+        final InputStream inputStream = getResources().openRawResource(id);
+
+        return objectMapper.readValue(inputStream, MusicTrivia.class);
     }
 
     private void setQuizOptions(Question question) {
@@ -72,33 +94,33 @@ public class QuizActivity extends AppCompatActivity {
                 break;
         }
 
-        this.questionNumber.setText("Question Number " + questionListIterator.nextIndex());
+        this.questionNumber.setText("Question Number " + questionListIterator.nextIndex() + "/" + musicTrivia.questions.size());
     }
 
-    public void nextQuestion(View view) {
+    public void nextQuestion(View view) throws InterruptedException {
         getCurrentAnswers();
         resetCheckboxState();
         if (questionListIterator.nextIndex() == 9) {
             nextButton.setText(R.string.view_results);
         }
         if (questionListIterator.nextIndex() >= 10) {
-            ResultsActivity.wrongAnswers = wrongAnswers;
-            startActivity(new Intent(this, ResultsActivity.class));
+            final Intent resultActivity = new Intent(this, ResultsActivity.class);
+            resultActivity.putExtra("wrongAnswers", wrongAnswers);
+            startActivity(resultActivity);
             return;
         }
-        this.questionNumber.setText("Question Number " + questionListIterator.nextIndex());
+        this.questionNumber.setText("Question Number " + questionListIterator.nextIndex() + "/" + musicTrivia.questions.size());
         currentQuestion = questionListIterator.next();
         setQuizOptions(currentQuestion);
     }
 
-    public void getCurrentAnswers() {
+    public void getCurrentAnswers() throws InterruptedException {
         final List<Answer> answers = new ArrayList<>(currentQuestion.answers.answer);
         saveAnswer(answers);
         actualAnswers.add(new Answers(answers));
         if (!currentQuestion.answers.answer.equals(answers)) {
-            Toast.makeText(this, "That was a wrong answer!", Toast.LENGTH_SHORT);
+            Toast.makeText(this, "Wrong answer!", Toast.LENGTH_SHORT).show();
             wrongAnswers++;
-            setCorrectAnswer(currentQuestion.answers.answer);
         }
     }
 
@@ -134,29 +156,24 @@ public class QuizActivity extends AppCompatActivity {
         this.answer4.setChecked(false);
     }
 
-    void setCorrectAnswer(List<Answer> answers) {
-
-
-    }
-
-    class CheckBoxSize1 {
-        public CheckBoxSize1(Question question) {
+    private class CheckBoxSize1 {
+        CheckBoxSize1(Question question) {
             answer1.setText(question.answers.answer.get(0).value);
             answer1.setVisibility(View.VISIBLE);
         }
     }
 
-    class CheckBoxSize2 extends CheckBoxSize1 {
-        public CheckBoxSize2(Question question) {
+    private class CheckBoxSize2 extends CheckBoxSize1 {
+        CheckBoxSize2(Question question) {
             super(question);
             answer2.setText(question.answers.answer.get(1).value);
             answer2.setVisibility(View.VISIBLE);
         }
     }
 
-    class CheckBoxSize3 extends CheckBoxSize2 {
+    private class CheckBoxSize3 extends CheckBoxSize2 {
 
-        public CheckBoxSize3(Question question) {
+        CheckBoxSize3(Question question) {
             super(question);
             answer3.setText(question.answers.answer.get(2).value);
             answer3.setVisibility(View.VISIBLE);
@@ -164,8 +181,8 @@ public class QuizActivity extends AppCompatActivity {
 
     }
 
-    class CheckBoxSize4 extends CheckBoxSize3 {
-        public CheckBoxSize4(Question question) {
+    private class CheckBoxSize4 extends CheckBoxSize3 {
+        CheckBoxSize4(Question question) {
             super(question);
             answer4.setText(question.answers.answer.get(3).value);
             answer4.setVisibility(View.VISIBLE);
