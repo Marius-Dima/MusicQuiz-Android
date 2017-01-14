@@ -77,6 +77,7 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     private void setQuizOptions(Question question) {
+        resetCheckboxState();
         questionText.setText(question.getText());
 
         switch (question.answers.answer.size()) {
@@ -99,7 +100,6 @@ public class QuizActivity extends AppCompatActivity {
 
     public void nextQuestion(View view) throws InterruptedException {
         getCurrentAnswers();
-        resetCheckboxState();
         if (questionListIterator.nextIndex() == 9) {
             nextButton.setText(R.string.view_results);
         }
