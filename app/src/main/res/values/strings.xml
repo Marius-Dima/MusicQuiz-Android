@@ -1,8 +1,7 @@
 <resources>
     <string name="app_name">Music Quiz</string>
     <string name="quizIntroText">\n
-        How good is your music knowledge?\n\n
-        Take this awesome Music Quiz and try to answer each of the 10 random questions!\n\n
+        Take this awesome Music Quiz and do your best to answer the 10 random questions!\n\n
     </string>
         <string name="startQuiz">
         START MUSIC QUIZ!
@@ -10,4 +9,6 @@
     <string name="music_trivia_address">https://roomtek-music-trivia-v1.p.mashape.com/getgamelevel?output=json</string>
     <string name="question_number">Question Number </string>
     <string name="view_results">View Results</string>
+    <string name="restart_quiz">Restart Quiz!</string>
+    <string name="retakeQuizText">Go ahead and retake the quiz!</string>
 </resources>

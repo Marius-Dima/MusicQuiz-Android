@@ -26,6 +26,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="76dp"
+            android:gravity="center"
+            android:text="@string/quizIntroText"
+            android:textColor="@color/green"
+            android:textSize="26sp" />
 
         <Button
             android:id="@+id/startQuiz"
@@ -38,15 +48,6 @@
             android:onClick="startQuiz"
             android:text="@string/startQuiz" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="76dp"
-            android:text="@string/quizIntroText"
-            android:textColor="@color/green"
-            android:textSize="26sp" />
     </RelativeLayout>
 
 

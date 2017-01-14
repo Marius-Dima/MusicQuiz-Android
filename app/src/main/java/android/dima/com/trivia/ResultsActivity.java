@@ -8,7 +8,6 @@ import android.widget.TextView;
 
 public class ResultsActivity extends AppCompatActivity {
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -16,7 +15,7 @@ public class ResultsActivity extends AppCompatActivity {
         int wrongAnswers = getIntent().getIntExtra("wrongAnswers", 0);
 
         final TextView resultsArea = (TextView) findViewById(R.id.resultsArea);
-        resultsArea.setText("Your score " + (10 - wrongAnswers) * 10 + "%");
+        resultsArea.setText("Your score: " + (10 - wrongAnswers) * 10 + "%");
     }
 
     public void restartQuiz(View view) {

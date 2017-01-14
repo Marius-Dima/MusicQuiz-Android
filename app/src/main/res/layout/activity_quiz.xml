@@ -18,12 +18,10 @@
         android:orientation="vertical"
         android:weightSum="1">
 
-
         <TextView
             android:id="@+id/questionNumber"
             android:layout_width="match_parent"
             android:layout_height="15pt"
-            android:text="Question 1"
             android:textAlignment="center"
             android:textColor="@color/white" />
 
@@ -49,7 +47,6 @@
             android:paddingLeft="@dimen/padding_left"
             android:scaleX="0.55"
             android:scaleY="0.55"
-            android:text="System of a Down"
             android:textColor="@color/white"
             android:textSize="@dimen/checkbox_text_size" />
 
@@ -64,7 +61,6 @@
             android:paddingLeft="@dimen/padding_left"
             android:scaleX="0.55"
             android:scaleY="0.55"
-            android:text="System of a Down"
             android:textColor="@color/white"
             android:textSize="@dimen/checkbox_text_size" />
 
@@ -79,7 +75,6 @@
             android:paddingLeft="@dimen/padding_left"
             android:scaleX="0.55"
             android:scaleY="0.55"
-            android:text="System of a Down"
             android:textColor="@color/white"
             android:textSize="@dimen/checkbox_text_size" />
 
@@ -94,7 +89,6 @@
             android:paddingLeft="@dimen/padding_left"
             android:scaleX="0.55"
             android:scaleY="0.55"
-            android:text="System of a Down"
             android:textColor="@color/white"
             android:textSize="@dimen/checkbox_text_size" />
 
